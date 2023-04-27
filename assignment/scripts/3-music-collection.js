@@ -27,3 +27,18 @@ function showCollection(anyArray){ //name function and set parameters
 
 showCollection(collection); //log to test function
 
+
+function findByArtist(artist){ //name function and set parameter
+    let findByArtistArray=[]; //set new blank array
+    for (i=0; i<collection.length; i++){ //start for loop to check each item
+        if (collection[i].artist === artist){ //use conditional to search for exact matches of artist names
+            findByArtistArray.push(collection[i]); //push function to add results to blank array
+        } //end conditional
+    } //end for loop
+        return findByArtistArray; //return function to add result to new blank array
+} // end findByArtist function
+
+console.log(findByArtist('Nick Cave & The Bad Seeds')); //test for artist at end of array to ensure full array is searched
+console.log(findByArtist('Modest Mouse')); //test for search of artist with multiple results
+console.log(findByArtist('Modest Mous')); //test for artist not included by using misspelling
+
