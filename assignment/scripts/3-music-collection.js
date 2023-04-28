@@ -18,6 +18,7 @@ console.log(addToCollection('Abbatoir Blues/The Lyre of Orpheus', 'Nick Cave & T
 
 console.log(collection); //test full array
 
+
 function showCollection(anyArray){ //name function and set parameters
     console.log('Number of objects in this array is:', anyArray.length); //log number of array items
     for (i=0; i<collection.length; i++){ //start for loop
@@ -43,28 +44,21 @@ console.log(findByArtist('Modest Mouse')); //test for search of artist with mult
 console.log(findByArtist('Modest Mous')); //test for artist not included by using misspelling
 
 
-
-// Create a function called search. This function should:
-
-// Take an input parameter for a search criteria object. Create your solution based on a search object that has these properties:
-// { artist: 'Ray Charles', year: 1957 }
-// The returned output from search should meet these requirements:
-// Return a new array of all items in the collection matching all of the search criteria.
-// If no results are found, return an empty array.
-// If there is no search object or an empty search object provided as input, then return all albums in the collection.
-
-
-function search(artist, yearPublished, anyArray){
-    let searchArray = [];
-    for (i=0; i<anyArray.length; i++){
-        if (anyArray[i].artist === artist && anyArray[i].yearPublished === yearPublished)
-            searchArray.push(anyArray[i]);
-    }
-    if (searchArray.length === 0){
-        return [];
-    } 
-    return searchArray;
+function search(artist, yearPublished){ //declare function and assign parameter
+    let searchArray = []; //declare new blank array
+    if ((typeof artist === 'undefined' || typeof yearPublished === 'undefined')){ //set conditional in case either parameter is undefined
+        return collection; //if either parameter is undefined, return original collection
+    } else { //else
+    for (i=0; i<collection.length; i++){ //start for loop
+        if (collection[i].artist === artist && collection[i].yearPublished === yearPublished) //check to exact match both imput parameters agaist original array values
+            searchArray.push(collection[i]); //for matching results, push to new array
+        } //end for loop
+    } //end else
+    return searchArray; //return new array, displaying any additions, or empty if parameters are filled but not matched
 }
 
-
-console.log(search('Modest Mouse', '1996', collection));
+console.log(search()); //test with no assigned arguments
+console.log(search('Modest Mouse')); //test with only one argument set
+console.log(search('Modest Mouse', '1996')); //test with two matchable arguments
+console.log(search('Modest Mous', '1996')); //test with spelling error for unmatched
+console.log(search('Modest Mouse', '1995')); //test with numerical error for unmatched
