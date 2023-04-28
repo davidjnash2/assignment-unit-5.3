@@ -42,3 +42,29 @@ console.log(findByArtist('Nick Cave & The Bad Seeds')); //test for artist at end
 console.log(findByArtist('Modest Mouse')); //test for search of artist with multiple results
 console.log(findByArtist('Modest Mous')); //test for artist not included by using misspelling
 
+
+
+// Create a function called search. This function should:
+
+// Take an input parameter for a search criteria object. Create your solution based on a search object that has these properties:
+// { artist: 'Ray Charles', year: 1957 }
+// The returned output from search should meet these requirements:
+// Return a new array of all items in the collection matching all of the search criteria.
+// If no results are found, return an empty array.
+// If there is no search object or an empty search object provided as input, then return all albums in the collection.
+
+
+function search(artist, yearPublished, anyArray){
+    let searchArray = [];
+    for (i=0; i<anyArray.length; i++){
+        if (anyArray[i].artist === artist && anyArray[i].yearPublished === yearPublished)
+            searchArray.push(anyArray[i]);
+    }
+    if (searchArray.length === 0){
+        return [];
+    } 
+    return searchArray;
+}
+
+
+console.log(search('Modest Mouse', '1996', collection));
